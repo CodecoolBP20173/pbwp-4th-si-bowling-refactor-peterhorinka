@@ -8,19 +8,19 @@ def score(game):
             result += 10 - last
         else:
             result += get_value(game[turn])
-       
-        if frame < 10  and get_value(game[turn]) == 10:
+
+        if frame < 10 and get_value(game[turn]) == 10:
             if game[turn] == '/':
                 result += get_value(game[turn + 1])
-            elif game[turn].lower() == 'x' :
+            elif game[turn].lower() == 'x':
                 result += get_value(game[turn + 1])
                 if game[turn + 2] == '/':
                     result += 10 - get_value(game[turn + 1])
                 else:
                     result += get_value(game[turn + 2])
-        
+
         last = get_value(game[turn])
-        
+
         if not in_first_half:
             frame += 1
         if in_first_half == True:
@@ -32,9 +32,10 @@ def score(game):
             frame += 1
     return result
 
+
 def get_value(char):
-    nums = ["1","2","3","4","5","6","7","8","9"]
-    
+    nums = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
     if char in nums:
         value = int(char)
     elif char.lower() == 'x':
