@@ -36,12 +36,13 @@ def get_value(char):
     nums = ["1","2","3","4","5","6","7","8","9"]
     
     if char in nums:
-        return int(char)
+        value = int(char)
     elif char.lower() == 'x':
-        return 10
+        value = 10
     elif char == '/':
-        return 10
+        value = 10
     elif char == '-':
-        return 0
+        value = 0
     else:
         raise ValueError()
+    return value
