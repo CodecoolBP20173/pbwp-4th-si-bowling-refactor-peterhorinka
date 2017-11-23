@@ -3,22 +3,23 @@ def score(game):
     frame = 1
     in_first_half = True
 
-    for i in range(len(game)):
-        if game[i] == '/':
+    for turn in range(len(game)):
+        if game[turn] == '/':
             result += 10 - last
         else:
-            result += get_value(game[i])
-        if frame < 10  and get_value(game[i]) == 10:
-            if game[i] == '/':
-                result += get_value(game[i+1])
-            elif game[i].lower() == 'x' :
-                result += get_value(game[i+1])
-                if game[i+2] == '/':
-                    result += 10 - get_value(game[i+1])
+            result += get_value(game[turn])
+       
+        if frame < 10  and get_value(game[turn]) == 10:
+            if game[turn] == '/':
+                result += get_value(game[turn + 1])
+            elif game[turn].lower() == 'x' :
+                result += get_value(game[turn + 1])
+                if game[turn + 2] == '/':
+                    result += 10 - get_value(game[turn + 1])
                 else:
-                    result += get_value(game[i+2])
+                    result += get_value(game[turn + 2])
         
-        last = get_value(game[i])
+        last = get_value(game[turn])
         
         if not in_first_half:
             frame += 1
@@ -26,7 +27,7 @@ def score(game):
             in_first_half = False
         else:
             in_first_half = True
-        if game[i].lower() == 'x':
+        if game[turn].lower() == 'x':
             in_first_half = True
             frame += 1
     return result
